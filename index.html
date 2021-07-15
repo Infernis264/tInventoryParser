@@ -16,6 +16,7 @@
 			height: 100%;
 			resize: none;
 			font-size: 1.3em;
+			padding: 2em;
 		}
 		#parsed {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,11 +27,13 @@
 			overflow-y: auto;
 			width: 50%;
 			height: 100%;
+			white-space: pre-line;
+			padding: 2em;
 		}
 	</style>
 </head>
 <body>
-	<textarea id="inventory"></textarea>
+	<textarea id="inventory" placeholder="Paste the inventory string here..."></textarea>
 	<div id="parsed"></div>
 	<script src="tInventoryParser.js"></script>
 	<script>

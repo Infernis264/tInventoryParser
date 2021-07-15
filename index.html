@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TShock Inventory Parser</title>
+</head>
+<body>
+	<textarea id="inventory"></textarea>
+	<div id="parsed"></div>
+	<script src="tInventoryParser.js"></script>
+	<script>
+		document.addEventListener("change", e=>{
+			if (e.target.id === "inventory") {
+				try {
+					let parsed = document.getElementById("parsed");
+					parsed.childNodes.forEach(n=>parsed.removeChild(n));
+					parsed.appendChild(document.createTextNode(parseInventory(e.target.value)));
+				} catch (e) {
+					console.log("failed silently");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -5105,7 +5105,7 @@ function parseInventory(inventory, emptystring) {
 		if (m.index === inventorymatch.lastIndex) {
 			inventorymatch.lastIndex++;
 		}
-		if (m[1] === m[2] && m[1] === 0) {
+		if (m[1] === m[2] && m[1] === "0") {
 			invarray.push(typeof emptystring === "string" && emptystring !== "" ? emptystring : "empty"); 
 			continue;
 		}

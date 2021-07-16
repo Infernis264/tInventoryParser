@@ -42,12 +42,28 @@
 				try {
 					let parsed = document.getElementById("parsed");
 					parsed.childNodes.forEach(n=>parsed.removeChild(n));
-					parsed.appendChild(document.createTextNode(parseInventory(e.target.value, "-").join("\n")));
+					let table = createTable(parseInventory(e.target.value, "-"));
+					parsed.appendChild(table);
 				} catch (e) {
 					console.log("failed silently");
 				}
 			}
-		})
+		});
+		function createTable(parsedStr) {
+			let tbody = document.createElement("tbody");
+			let table = document.createElement("table").appendChild(tbody);
+			let rows = parsedStr.map(item=>{
+				let parts = item.split(",");
+				let tr = document.createElement("tr");
+				tr.appendChild(document.createElement("td").appendChild(document.createTextNode(parts[0])));
+				tr.appendChild(document.createElement("td").appendChild(document.createTextNode(parts[1])));
+				return tr;
+			});
+			rows.forEach(row=>{
+				tbody.appendChild(row);
+			});
+			return table;
+		}
 	</script>
 </body>
 </html>

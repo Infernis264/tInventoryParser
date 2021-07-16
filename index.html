@@ -42,7 +42,7 @@
 				try {
 					let parsed = document.getElementById("parsed");
 					parsed.childNodes.forEach(n=>parsed.removeChild(n));
-					parsed.appendChild(document.createTextNode(parseInventory(e.target.value).join("\n")));
+					parsed.appendChild(document.createTextNode(parseInventory(e.target.value, "-").join("\n")));
 				} catch (e) {
 					console.log("failed silently");
 				}

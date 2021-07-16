@@ -5094,9 +5094,10 @@ const inventorymatch = /(?<=\d+~)(\d+)(?:,)(\d+)/gm;
 /**
  * Converts a tshock tsCharacter inventory into a human readable inventory
  * @param inventory the tshock inventory string for a character
+ * @param emptystring the string that should be used for empty slots (default is the word "empty")
  * @returns a human-readable array of items and their quantities
  */
-function parseInventory(inventory) {
+function parseInventory(inventory, emptystring) {
 	let invarray = [];
 	let inv = "0~"+inventory;
 	let m;
@@ -5104,8 +5105,8 @@ function parseInventory(inventory) {
 		if (m.index === inventorymatch.lastIndex) {
 			inventorymatch.lastIndex++;
 		}
-		if (m[1] === m[2] === 0) {
-			invarray.push("empty"); 
+		if (m[1] === m[2] && m[1] === "0") {
+			invarray.push(typeof emptystring === "string" && emptystring !== "" ? emptystring : "empty"); 
 			continue;
 		}
 		invarray.push(`${items[m[1]]}, ${m[2]}`);

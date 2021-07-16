@@ -51,12 +51,16 @@
 		});
 		function createTable(parsedStr) {
 			let tbody = document.createElement("tbody");
-			let table = document.createElement("table").appendChild(tbody);
+			let table = document.createElement("table");
+			table.appendChild("tbody");
 			let rows = parsedStr.map(item=>{
 				let parts = item.split(",");
 				let tr = document.createElement("tr");
-				tr.appendChild(document.createElement("td").appendChild(document.createTextNode(parts[0])));
-				tr.appendChild(document.createElement("td").appendChild(document.createTextNode(parts[1])));
+				for (let i = 0; i < parts.length; i++) {
+					let td = document.createElement("td");
+					td.appendChild(document.createTextNode(part[i]));
+					tr.appendChild(td);
+				}
 				return tr;
 			});
 			rows.forEach(row=>{

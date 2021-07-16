@@ -52,8 +52,7 @@
 		function createTable(parsedStr) {
 			let tbody = document.createElement("tbody");
 			let table = document.createElement("table");
-			table.appendChild("tbody");
-			let rows = parsedStr.map(item=>{
+			parsedStr.forEach(item=>{
 				let parts = item.split(",");
 				let tr = document.createElement("tr");
 				for (let i = 0; i < parts.length; i++) {
@@ -61,11 +60,9 @@
 					td.appendChild(document.createTextNode(part[i]));
 					tr.appendChild(td);
 				}
-				return tr;
+				tbody.appendChild(tr);
 			});
-			rows.forEach(row=>{
-				tbody.appendChild(row);
-			});
+			table.appendChild(tbody);
 			return table;
 		}
 	</script>
